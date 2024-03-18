@@ -6,7 +6,6 @@ console.log();
 
 console.log('1 $ = 0.85 €');
 
-// Creamos una interfaz readline para la entrada estándar
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
@@ -18,7 +17,7 @@ let resultado;
 rl.question('Ingrese el cantidad deseada: ', (cDolares) => {
     console.log('Cantidad ingresada: ', cDolares);
 
-    if (cDolares >= 0 && !Number.isInteger(cDolares)) {
+    if (cDolares > 0 && !Number.isInteger(cDolares)) {
         resultado = cDolares * cambio;
         console.log('Sus dolares quivalen a: ', resultado);
     } else {

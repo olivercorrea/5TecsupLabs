@@ -36,10 +36,29 @@ app.post('/matriculas', (req, res) => {
 app.post('/confirmacion', (req, res) => {
     const curso = req.body.curso;
     const medioPago = req.body.medioPago;
+    const modulo = req.body.modulo;
+    // Lógica para procesar los datos y mostrar la vista de confirmación
+    res.render('confirmacion', { curso, medioPago, modulo });
+});
+
+// Ruta de lista de modulos
+app.post('/modulos', (req, res) => {
+    const curso = req.body.curso;
+    //const medioPago = req.body.medioPago;
+    console.log('Valor de curso:', curso);
+    // Lógica para procesar los datos y mostrar la vista de confirmación
+    res.render('modulos', { curso });
+});
+
+// Ruta de pago
+app.post('/pago', (req, res) => {
+    const modulo = req.body.curso;
+    //const medioPago = req.body.medioPago;
 
     // Lógica para procesar los datos y mostrar la vista de confirmación
-    res.render('confirmacion', { curso, medioPago });
+    res.render('pago', { modulo });
 });
+
 
 // Puerto en el que el servidor escucha las solicitudes
 const PORT = 3000;

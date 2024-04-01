@@ -1,0 +1,34 @@
+Ahora quiero que analices el siguinete codigo como hiciste con los anteriores, es decir que no es necesario que me lo expliques porque más adelante te voy a pasar un problema que me salio.
+
+confirmación.ejs:
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirmación de Matrícula</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Confirmación de Matrícula</h1>
+        <hr>
+
+        <h3>Curso seleccionado:</h3>
+        <p><strong>Curso:</strong> <%= curso %></p>
+
+        <h3>Medio de pago seleccionado:</h3>
+        <p><strong>Medio de Pago:</strong> <%= medioPago %></p>
+
+        <h3>Módulo seleccionado:</h3>
+        <p><strong>Módulo:</strong> <%= modulo %></p>
+
+        <h3>Datos de confirmación:</h3>
+        <p>¡Su matrícula ha sido confirmada! Los siguientes son los detalles de su matrícula:</p>
+
+        <ul>
+            <li><strong>Curso:</strong> <%= curso %></li>
+            <li><strong>Módulo:</strong> <%= modulo %></li>
+            <li><strong>Medio de Pago:</strong> <%= medioPago %></li>
+        </ul>
+    </div>
+</body>
+</html>

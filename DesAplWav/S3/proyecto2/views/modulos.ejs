@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Matrículas</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Seleccione el modulo de la lista</h1>
+        <hr>
+
+
+        <form action="/pago" method="post">
+            <h3>Selecciona los módulos que deseas llevar:</h3>
+            <ul class="list-group">
+              <li class="list-group-item">
+                <input type="checkbox" id="modulo1" name="modulos[]" value="basico">
+                <label for="modulo1">Básico</label>
+              </li>
+              <li class="list-group-item">
+                <input type="checkbox" id="modulo2" name="modulos[]" value="intermedio">
+                <label for="modulo2">Intermedio</label>
+              </li>
+              <li class="list-group-item">
+                <input type="checkbox" id="modulo3" name="modulos[]" value="avanzado">
+                <label for="modulo3">Avanzado</label>
+              </li>
+            </ul>
+            <p></p>
+            <button type="submit" class="btn btn-primary" id="siguiente2">Siguiente</button>
+        
+        </form>
+
+
+            <!-- <h3>Seleccione un medio de pago:</h3>
+            <div class="form-group">
+                <label for="medioPago">Medio de Pago:</label>
+                <select class="form-control" id="medioPago" name="medioPago">
+                    <option value="Tarjeta de crédito">Tarjeta de crédito</option>
+                    <option value="Transferencia bancaria">Transferencia bancaria</option>
+                    <option value="Pago en efectivo">Pago en efectivo</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Confirmar Matrícula</button> 
+        </form>-->
+    </div>
+</body>
+</html>

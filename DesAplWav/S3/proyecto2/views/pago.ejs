@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Matrículas</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+
+        <form action="/confirmacion" method="post">
+
+            <h3>Seleccione un medio de pago:</h3>
+            <div class="form-group">
+                <label for="medioPago">Medio de Pago:</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="medioPago" id="tarjetaCredito" value="Tarjeta de crédito" checked>
+                    <label class="form-check-label" for="tarjetaCredito">
+                        Tarjeta de crédito
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="medioPago" id="pagoEfectivo" value="Pago en efectivo">
+                    <label class="form-check-label" for="pagoEfectivo">
+                        Pago en efectivo
+                    </label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Confirmar método</button>
+        </form>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Matrículas</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Matrícula de un curso de capacitación</h1>
+        <hr>
+
+        <h3>Seleccione un curso:</h3>
+        <form action="/modulos" method="post">
+            <div class="form-group">
+                <label for="curso">Curso:</label>
+                <select class="form-control" id="curso" name="curso">
+                    <option value="Java">Java</option>
+                    <option value="PHP">PHP</option>
+                    <option value=".NET">.NET</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Siguiente</button>
+
+            <!-- <h3>Seleccione un medio de pago:</h3>
+            <div class="form-group">
+                <label for="medioPago">Medio de Pago:</label>
+                <select class="form-control" id="medioPago" name="medioPago">
+                    <option value="Tarjeta de crédito">Tarjeta de crédito</option>
+                    <option value="Transferencia bancaria">Transferencia bancaria</option>
+                    <option value="Pago en efectivo">Pago en efectivo</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Confirmar Matrícula</button> -->
+            
+        </form>
+    </div>
+</body>
+</html>

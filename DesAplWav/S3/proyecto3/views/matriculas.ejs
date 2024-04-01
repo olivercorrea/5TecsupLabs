@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Matrículas</title>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+   <div class="container mt-5">
+       <h1 class="text-center">Sistema de Matrículas</h1>
+       <hr>
+
+       <div id="paso1">
+           <h3>Paso 1: Seleccione un curso</h3>
+           <div class="form-group">
+               <label for="curso">Curso:</label>
+               <select class="form-control" id="curso">
+                   <option value="Java">Java</option>
+                   <option value="PHP">PHP</option>
+                   <option value=".NET">.NET</option>
+               </select>
+           </div>
+           <button type="button" class="btn btn-outline-secondary" id="siguiente1">Siguiente</button>
+       </div>
+
+       <div id="paso2" style="display: none;">
+           <h3>Paso 2: Seleccione los módulos</h3>
+           <div class="form-group">
+               <div class="form-check">
+                   <input class="form-check-input" type="checkbox" id="basico" value="Basico">
+                   <label class="form-check-label" for="basico">Básico</label>
+               </div>
+               <div class="form-check">
+                   <input class="form-check-input" type="checkbox" id="intermedio" value="Intermedio">
+                   <label class="form-check-label" for="intermedio">Intermedio</label>
+               </div>
+               <div class="form-check">
+                   <input class="form-check-input" type="checkbox" id="avanzado" value="Avanzado">
+                   <label class="form-check-label" for="avanzado">Avanzado</label>
+               </div>
+           </div>
+           <button type="button" class="btn btn-outline-secondary" id="siguiente2">Siguiente</button>
+       </div>
+
+       <div id="paso3" style="display: none;">
+           <h3>Paso 3: Seleccione medio de pago</h3>
+           <div class="form-group">
+               <div class="form-check">
+                   <input class="form-check-input" type="radio" name="medioPago" id="tarjetaCredito" value="Tarjeta de crédito">
+                   <label class="form-check-label" for="tarjetaCredito">Tarjeta de crédito</label>
+               </div>
+               <div class="form-check">
+                   <input class="form-check-input" type="radio" name="medioPago" id="pagoEfectivo" value="Pago en efectivo">
+                   <label class="form-check-label" for="pagoEfectivo">Pago en efectivo</label>
+               </div>
+           </div>
+           <button type="button" class="btn btn-outline-secondary" id="siguiente3">Siguiente</button>
+       </div>
+
+       <div id="detalle" style="display: none;">
+           <h3>Detalle de la matrícula</h3>
+           <p id="detalle-curso"></p>
+           <p id="detalle-modulos"></p>
+           <p id="detalle-medio-pago"></p>
+           <p id="detalle-total"></p>
+       </div>
+   </div>
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <script>
+       $(document).ready(function(){
+           // Variables para almacenar datos seleccionados
+           var cursoSeleccionado, modulosSeleccionados, medioPagoSeleccionado, totalPagar;
+
+           // Paso 1: Curso seleccionado
+           $('#siguiente1').click(function(){
+               cursoSeleccionado = $('#curso').val();
+               $('#paso1').hide();
+               $('#paso2').show();
+           });
+
+           // Paso 2: Módulos seleccionados
+           $('#siguiente2').click(function(){
+               modulosSeleccionados = [];
+               $('input[type=checkbox]:checked').each(function(){
+                   modulosSeleccionados.push($(this).val());
+               });
+               $('#paso2').hide();
+               $('#paso3').show();
+           });
+
+           // Paso 3: Medio de pago seleccionado
+           $('#siguiente3').click(function(){
+               medioPagoSeleccionado = $('input[name=medioPago]:checked').val();
+               calcularTotalPagar();
+               mostrarDetalle();
+           });
+
+           // Calcular total a pagar
+           function calcularTotalPagar(){
+               var costoModulo = 0;
+               if(cursoSeleccionado === 'Java'){
+                   costoModulo = 1200;
+               } else if(cursoSeleccionado === 'PHP'){
+                   costoModulo = 800;
+               } else if(cursoSeleccionado === '.NET'){
+                   costoModulo = 1500;
+               }
+               var descuento = medioPagoSeleccionado === 'Pago en efectivo' ? 0.1 : 0;
+               totalPagar = (costoModulo * modulosSeleccionados.length) * (1 - descuento);
+           }
+
+           // Mostrar detalle de la matrícula
+           function mostrarDetalle(){
+               $('#detalle-curso').text('Curso: ' + cursoSeleccionado);
+               $('#detalle-modulos').text('Módulos: ' + modulosSeleccionados.join(', '));
+               $('#detalle-medio-pago').text('Medio de pago: ' + medioPagoSeleccionado);
+               $('#detalle-total').text('Total a pagar: S/ ' + totalPagar.toFixed(2));
+               $('#detalle').show();
+           }
+       });
+   </script>
+</body>
+</html>

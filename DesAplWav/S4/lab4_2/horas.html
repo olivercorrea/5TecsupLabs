@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Mostrar Hora</title>
+</head>
+<body>
+    <h1>Mostrar las horas en diferente formato</h1>
+    <div id="hora24"></div>
+    <div id="hora12"></div>
+
+    <script>
+        function obtenerHoraFormato24() {
+            const fecha = new Date();
+            const horas = fecha.getHours().toString().padStart(2, '0');
+            const minutos = fecha.getMinutes().toString().padStart(2, '0');
+            const segundos = fecha.getSeconds().toString().padStart(2, '0');
+            return `${horas}:${minutos}:${segundos}`;
+        }
+
+        function obtenerHoraFormato12() {
+            const fecha = new Date();
+            let horas = fecha.getHours();
+            const minutos = fecha.getMinutes().toString().padStart(2, '0');
+            const segundos = fecha.getSeconds().toString().padStart(2, '0');
+            const amPm = horas >= 12 ? 'PM' : 'AM';
+            horas = horas % 12 || 12;
+            return `${horas}:${minutos}:${segundos} ${amPm}`;
+        }
+
+        function actualizarHora() {
+            const hora24 = obtenerHoraFormato24();
+            const hora12 = obtenerHoraFormato12();
+            document.getElementById('hora24').textContent = `Hora en 24 horas: ${hora24}`;
+            document.getElementById('hora12').textContent = `Hora en 12 horas: ${hora12}`;
+        }
+
+        setInterval(actualizarHora, 1000);
+
+        window.onload = actualizarHora;
+    </script>
+</body>
+</html>

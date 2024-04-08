@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcular Días Faltantes</title>
+</head>
+<body>
+    <h1>Calcular Días Faltantes</h1>
+    <form action="/dias" method="get">
+        <label for="fecha">Ingrese una fecha (Formato YYYY-MM-DD):</label><br>
+        <input type="text" id="fecha" name="fecha"><br>
+        <button type="submit">Calcular</button>
+    </form>
+    <div id="resultado"></div>
+    <script>
+        document.querySelector('form').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const fecha = document.getElementById('fecha').value;
+            const response = await fetch(`/calcularDiasFaltantes?fecha=${fecha}`);
+            const resultado = await response.text();
+            document.getElementById('resultado').textContent = resultado;
+        });
+    </script>
+</body>
+</html>

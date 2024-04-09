@@ -1,8 +1,11 @@
-import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native'
-import React from 'react'
+import { View, Text, StyleSheet, TouchableOpacity, Alert, Image } from 'react-native'
+import React, {useState} from 'react'
 import * as ImagePicker from 'expo-image-picker'
 
 const App = () => {
+
+  const [selectedImage, setSelectedImage] = useState(null)
+
   let openImagePickerAsync = async () => {
     let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync()
 
@@ -10,11 +13,26 @@ const App = () => {
       alert('Se requiere permiso para acceder al equipo');
       return;
     }
+
+    const pickerResult = await ImagePicker.launchImageLibraryAsync()
+
+    if (pickerResult.canceled === true) {
+      return;
+    }
+
+    setSelectedImage({localUri: pickerResult.uri})
   }
 
   return (
     <View style={styles.container}>
       <Text>Hola Mundo!!</Text>
+      <Image
+        source={{uri: selectedImage !== null
+          ? selectedImage.localUri
+          : "https://picsum.photos/200/200"
+        }}
+        style={styles.Image}
+      />
       <TouchableOpacity
         onPress={openImagePickerAsync}
         style = {styles.button}
@@ -42,4 +60,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default App
+export default App;

@@ -7,7 +7,7 @@ const pool = createPool({
     host: 'mysqldb',
     user: 'root',
     password: '123456',
-    port: '3307'
+    port: '3306' // ponemos el puerto de 3307 a 3306 que esta en el contenedor, para una comunicación mejor de la red
 })
 app.get('/', (reg, res) =>{
     res.send('Hello-world')

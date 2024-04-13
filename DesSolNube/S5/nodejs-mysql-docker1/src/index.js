@@ -4,7 +4,7 @@ import { createPool } from 'mysql2/promise'
 const app = express()
 
 const pool = createPool({
-    host: 'localhost',
+    host: 'mysqldb',
     user: 'root',
     password: '123456',
     port: '3307'

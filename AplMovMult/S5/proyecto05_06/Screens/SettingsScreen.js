@@ -14,4 +14,4 @@ const SettingsScreen = () => {
     )
 }
 
-export default HomeScreen;
+export default SettingsScreen;

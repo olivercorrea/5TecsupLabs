@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Agenda de Tareas</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto py-8">
+        <h1 class="text-3xl font-semibold mb-6">Agenda de Tareas</h1>
+        <form id="addForm" class="mb-8">
+            <div class="grid grid-cols-12 gap-4">
+                <div class="col-span-3">
+                    <input type="text" id="nombre_tarea" class="form-input" placeholder="Nombre de la tarea" required>
+                </div>
+                <div class="col-span-3">
+                    <input type="text" id="encargado_tarea" class="form-input" placeholder="Encargado de la tarea" required>
+                </div>
+                <div class="col-span-3">
+                    <input type="date" id="fecha_entrega_tarea" class="form-input" required>
+                </div>
+                <div class="col-span-2">
+                    <select id="estado_tarea" class="form-select">
+                        <option value="Pendiente">Pendiente</option>
+                        <option value="En progreso">En progreso</option>
+                        <option value="Completada">Completada</option>
+                    </select>
+                </div>
+                <div class="col-span-1">
+                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Agregar Tarea</button>
+                </div>
+            </div>
+        </form>
+        <div id="tareas" class="overflow-x-auto">
+            <table class="table-auto w-full border-collapse border border-gray-200">
+                <thead class="bg-gray-200">
+                    <tr>
+                        <th class="px-4 py-2">Nombre</th>
+                        <th class="px-4 py-2">Encargado</th>
+                        <th class="px-4 py-2">Fecha Entrega</th>
+                        <th class="px-4 py-2">Estado</th>
+                        <th class="px-4 py-2">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                    <!-- Aquí se añadirán las filas de la tabla dinámicamente -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
+
+

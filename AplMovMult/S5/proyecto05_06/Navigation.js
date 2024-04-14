@@ -2,12 +2,33 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import HomeScreen from './Screens/HomeScreen';
 import SettingsScreen from './Screens/SettingsScreen';
 import StackScreen from './Screens/StackScreen';
 
 const Tab = createBottomTabNavigator();
+const HomeSatckNavigator = createNativeStackNavigator();
+const Stack = createStackNavigator();
+
+function MyStack() {
+    return(
+        <HomeSatckNavigator.Navigator
+           initialRouteName="HomeScreen"
+        >
+            <HomeSatckNavigator.Screen
+                name="HomeScreen"
+                component={HomeScreen}
+            />
+            <HomeSatckNavigator.Screen
+                name="Stack"
+                component={StackScreen}
+            />
+        </HomeSatckNavigator.Navigator>
+    )
+}
 
 function MyTabs() {
     return (

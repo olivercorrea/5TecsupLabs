@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat con Socket.IO</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        // Conexión de Socket.IO al servidor
+        var socket = io();
+
+
+        // Función para enviar mensajes del chat 1
+        function enviarMensaje1() {
+            var mensaje = document.getElementById('mensaje1').value;
+            socket.emit('chat message 1', mensaje);
+            document.getElementById('mensaje1').value = '';
+            return false;
+        }
+
+
+        // Función para recibir mensajes del chat 1
+        socket.on('chat message 1', function(msg){
+            var listaMensajes = document.getElementById('lista-mensajes');
+            var mensaje = document.createElement('li');
+            mensaje.textContent = "Chat 1: " + msg;
+            listaMensajes.appendChild(mensaje);
+        });
+
+
+        // Función para enviar mensajes del chat 2
+        function enviarMensaje2() {
+            var mensaje = document.getElementById('mensaje2').value;
+            socket.emit('chat message 2', mensaje);
+            document.getElementById('mensaje2').value = '';
+            return false;
+        }
+
+
+        // Función para recibir mensajes del chat 2
+        socket.on('chat message 2', function(msg){
+            var listaMensajes = document.getElementById('lista-mensajes');
+            var mensaje = document.createElement('li');
+            mensaje.textContent = "Chat 2: " + msg;
+            listaMensajes.appendChild(mensaje);
+        });
+    </script>
+</head>
+<body>
+    <h1>Chat 1</h1>
+    <form onsubmit="return enviarMensaje1()">
+        <input id="mensaje1" autocomplete="off" />
+        <button>Enviar</button>
+    </form>
+
+
+    <h1>Chat 2</h1>
+    <form onsubmit="return enviarMensaje2()">
+        <input id="mensaje2" autocomplete="off" />
+        <button>Enviar</button>
+    </form>
+
+
+    <h1>Mensajes</h1>
+    <ul id="lista-mensajes"></ul>
+</body>
+</html>

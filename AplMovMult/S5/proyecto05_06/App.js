@@ -31,7 +31,7 @@ const App = () => {
           ? selectedImage.localUri
           : "https://picsum.photos/200/200"
         }}
-        style={styles.Image}
+        style={styles.image}
       />
       <TouchableOpacity
         onPress={openImagePickerAsync}
@@ -57,6 +57,12 @@ const styles = StyleSheet.create({
   buttonText: {
     color: '#fff',
     fontSize: 20
+  },
+  image: {
+    height: 200,
+    width: 200,
+    borderRadius: 100,
+    resizeMode: 'contain'
   }
 });
 

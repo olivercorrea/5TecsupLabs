@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  mysqldb:
+    image: mysql
+    # env_file: ./.env
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_DATABASE=oliverTareadb1
+    ports:
+      - 3306:3306

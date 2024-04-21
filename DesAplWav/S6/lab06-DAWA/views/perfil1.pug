@@ -1,0 +1,53 @@
+//- views/perfil.pug
+
+doctype html
+html
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Perfil de #{user.nombre}
+    link(rel="stylesheet", href="/css/styles.css")
+    style
+      body {
+         font-family: Arial, sans-serif;
+         background-color: #f4f4f4;
+         margin: 0;
+         padding: 0;
+         display: flex;
+         justify-content: center; /* Centra horizontalmente */
+         align-items: center; /* Centra verticalmente */
+         height: 100vh; /* Hace que el cuerpo ocupe toda la altura de la ventana */
+      }
+      .container {
+         max-width: 800px;
+         padding: 20px;
+         background-color: #fff;
+         border-radius: 5px;
+         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+         color: #333;
+      }
+      ul {
+         list-style: none;
+         padding: 0;
+      }
+      li {
+         margin-bottom: 10px;
+      }
+      a {
+         display: block;
+         margin-top: 20px;
+         color: #007bff;
+         text-decoration: none;
+      }
+      a:hover {
+         text-decoration: underline;
+      }
+  body
+    div.container
+      h1 Perfil de #{user.nombre}
+      ul
+        li ID: #{user.id}
+        li Nombre: #{user.nombre}
+      a(href="/") Volver a la página principal

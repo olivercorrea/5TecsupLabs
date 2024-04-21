@@ -1,0 +1,26 @@
+//- views/perfil.pug Esto es lo que tengo en perfil.pug
+
+doctype html
+html
+  head
+    title Perfil de #{user.nombre}
+    link(rel="stylesheet", href="/css/styles.css")
+    style.
+
+      .purple-text {
+
+        color: purple;
+
+      }
+  body
+    h1 Perfil de #{user.nombre}
+    ul
+      li ID: #{user.id}
+      li Nombre: #{user.nombre}
+      
+    p
+    | Nombre: #{user.nombre}
+    br
+    | Email: #{user.email}
+    br
+    a(href="/") Volver a la página principal

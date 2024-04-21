@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Habilidades - <%= username %></title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-pink-100">
+  <h1 class="text-4xl text-center py-10">Estas son las habilidades de <%= username %></h1>
+
+  <div class="flex justify-center">
+    <div class="w-full px-5">
+      <h2 class="text-2xl text-center py-5">Frontend Skills</h2>
+      <div class="grid grid-cols-5 gap-4">
+        <div class="text-center">
+          <img src="https://miro.medium.com/v2/resize:fit:792/1*lJ32Bl-lHWmNMUSiSq17gQ.png" alt="HTML/CSS" class="mx-auto">
+          <p>HTML/CSS</p>
+        </div>
+        <div class="text-center">
+          <img src="https://ayudawp.com/wp-content/uploads/2017/01/javascript-logo-escudo.png" alt="JavaScript" class="mx-auto">
+          <p>JavaScript</p>
+        </div>
+        <div class="text-center">
+          <img src="https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png" alt="React" class="mx-auto">
+          <p>React</p>
+        </div>
+        <div class="text-center">
+          <img src="https://download.logo.wine/logo/Bootstrap_(front-end_framework)/Bootstrap_(front-end_framework)-Logo.wine.png" alt="Bootstrap" class="mx-auto">
+          <p>Bootstrap</p>
+        </div>
+        <div class="text-center">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/1280px-Tailwind_CSS_Logo.svg.png" alt="Tailwind_CSS" class="mx-auto">
+          <p>Tailwind_CSS</p>
+        </div>
+      </div>
+
+      <h2 class="text-2xl text-center py-5">Backend Skills</h2>
+      <div class="grid grid-cols-5 gap-4">
+        <div class="text-center">
+          <img src="https://static-00.iconduck.com/assets.00/node-js-icon-454x512-nztofx17.png" alt="Node.js" class="mx-auto">
+          <p>Node.js</p>
+        </div>
+        <div class="text-center">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Expressjs.png" alt="Express.js" class="mx-auto">
+          <p>Express.js</p>
+        </div>
+        <div class="text-center">
+          <img src="https://1000logos.net/wp-content/uploads/2020/08/Django-Logo.png" alt="Django" class="mx-auto">
+          <p>Django</p>
+        </div>
+        <div class="text-center">
+          <img src="https://1000logos.net/wp-content/uploads/2020/08/MySQL-Logo.png" alt="MySQL" class="mx-auto">
+          <p>MySQL</p>
+        </div>
+        <div class="text-center">
+          <img src="https://www.fortra.com/sites/default/files/linux-logo.png" alt="Linux" class="mx-auto">
+          <p>Linux</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="text-center py-5">
+    <a href="/Portafolio/<%= username %>" class="bg-yellow-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Retroceder</a>
+  </div>
+</body>
+</html>

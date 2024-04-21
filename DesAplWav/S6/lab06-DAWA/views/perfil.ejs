@@ -1,0 +1,27 @@
+<!-- views/perfil.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de <%= user.nombre %></title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Perfil de <%= user.nombre %></h1>
+    <ul>
+        <li>ID: <%= user.id %></li>
+        <li>Nombre: <%= user.nombre %></li>
+    </ul>
+    <p class="purple-text">Nombre: <%= user.nombre %></p>
+    <p class="purple-text">Email: <%= user.email %></p>
+    <a href="/" class="purple-text">Volver a la página principal</a>
+    <script>
+        const purpleTextElements = document.querySelectorAll('.purple-text');
+        purpleTextElements.forEach(element => {
+            element.style.color = 'purple';
+        });
+    </script>
+</body>
+</html>

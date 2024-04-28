@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Videojuegos</title>
+    <!-- Include Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100">
+    <div class="container mx-auto p-4">
+        <h1 class="text-2xl font-bold mb-4">Lista de Videojuegos</h1>
+        <% videojuegos.forEach(function(videojuego) { %>
+            <div class="bg-white rounded-lg shadow-md mb-4 p-4">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="font-bold text-lg"><%= videojuego.nombre %></span>
+                    <div class="flex space-x-2">
+                        <button class="bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 rounded"
+                            onclick="location.href='/editarVideojuego/<%= videojuego._id %>'">Editar</button>
+                        <button class="bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded"
+                            onclick="eliminarVideojuego('<%= videojuego._id %>')">Eliminar</button>
+                    </div>
+                </div>
+                <div class="text-gray-600 mb-2">
+                    <p>Plataforma: <%= videojuego.plataforma %></p>
+                    <p>Desarrollador: <%= videojuego.desarrollador %></p>
+                </div>
+                <img src="/images/<%= videojuego.imagen %>" alt="<%= videojuego.nombre %>"
+                    class="rounded-lg shadow-md w-full h-auto">
+            </div>
+        <% }); %>
+        <a href="/" class="text-blue-500 hover:underline block mb-4">Agregar más juegos</a>
+    </div>
+
+    <script>
+        function eliminarVideojuego(videojuegoId) {
+            if (confirm('¿Estás seguro de que deseas eliminar este videojuego?')) {
+                window.location.href = '/eliminarVideojuego/' + videojuegoId;
+            }
+        }
+    </script>
+</body>
+
+</html>
+

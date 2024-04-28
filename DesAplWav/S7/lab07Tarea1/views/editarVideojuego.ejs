@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Videojuego</title>
+ 
+</head>
+<body>
+    <div class="container">
+        <h1>Editar Videojuego</h1>
+        <form action="/actualizarVideojuego/<%= videojuego._id %>" method="post" enctype="multipart/form-data">
+            <label for="nombre">Nombre</label>
+            <input type="text" name="nombre" id="nombre" value="<%= videojuego.nombre %>" required>
+
+            <label for="plataforma">Plataforma</label>
+            <input type="text" name="plataforma" id="plataforma" value="<%= videojuego.plataforma %>" required>
+            
+            <label for="desarrollador">Desarrollador</label>
+            <input type="text" name="desarrollador" id="desarrollador" value="<%= videojuego.desarrollador %>" required>
+            
+            <label for="nuevaImagen">Nueva Imagen</label>
+            <input type="file" name="nuevaImagen" id="nuevaImagen" accept="image/*">
+            <input type="submit" value="Guardar Cambios">
+        </form>
+    </div>
+</body>
+</html>

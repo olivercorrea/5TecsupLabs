@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CRUD de Usuarios</title>
+    <title>Editar Usuario</title>
     <link
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
       rel="stylesheet"
@@ -11,13 +11,14 @@
   </head>
   <body class="flex items-center justify-center h-screen">
     <div class="w-full max-w-md">
-      <h1 class="text-2xl mb-4">Usuarios</h1>
-      <form action="/users" method="POST" class="mb-4">
+      <h1 class="text-2xl mb-4">Editar Usuario</h1>
+      <form action="/users/update/<%= user._id %>" method="POST" class="mb-4">
         <label for="name" class="block mb-2">Nombre:</label>
         <input
           type="text"
           id="name"
           name="name"
+          value="<%= user.name %>"
           required
           class="border border-gray-300 rounded-md px-2 py-1 mb-2 w-full"
         />
@@ -26,6 +27,7 @@
           type="email"
           id="email"
           name="email"
+          value="<%= user.email %>"
           required
           class="border border-gray-300 rounded-md px-2 py-1 mb-2 w-full"
         />
@@ -34,31 +36,18 @@
           type="password"
           id="password"
           name="password"
-          required
+          placeholder="Dejar en blanco para mantener la misma contraseña"
           class="border border-gray-300 rounded-md px-2 py-1 mb-2 w-full"
         />
         <button
           type="submit"
-          class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 w-full"
+          class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 w-full"
         >
-          Crear Usuario
+          Actualizar Usuario
         </button>
       </form>
       <hr class="my-4" />
-      <h2 class="text-xl mb-2">Lista de Usuarios</h2>
-      <ul>
-        <% users.forEach((user) => { %>
-        <li class="mb-2">
-          <%= user.name %> (<%= user.email %>)
-          <a href="/users/edit/<%= user._id %>" class="text-blue-500 mx-2"
-            >Editar</a
-          >
-          <a href="/users/delete/<%= user._id %>" class="text-red-500"
-            >Eliminar</a
-          >
-        </li>
-        <% }) %>
-      </ul>
+      <a href="/users" class="text-green-500">Regresar a la lista de usuarios</a>
     </div>
   </body>
 </html>

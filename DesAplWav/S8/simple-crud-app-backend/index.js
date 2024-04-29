@@ -5,7 +5,7 @@ const app = express();
 
 // middleware
 app.use(express.json()); // Para permitir pasar Json por defecto
-// app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({extended: false})); // Para permitir form-data, es parecido a json
 
 app.get("/", (req, res) => {
   res.send("Hola desde la API node updated 2.");

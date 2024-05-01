@@ -3,6 +3,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const usersRouter = require("./routes/users");
+const bcrypt = require('bcrypt');
 
 const app = express();
 

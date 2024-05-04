@@ -49,5 +49,15 @@
       <hr class="my-4" />
       <a href="/users" class="text-green-500">Regresar a la lista de usuarios</a>
     </div>
+
+    <% if (errors && Object.keys(errors).length > 0) { %>
+      <div class="bg-red-500 text-white p-4 mb-4">
+        <% for (const key in errors) { %>
+          <p><%= errors[key] %></p>
+        <% } %>
+      </div>
+    <% } %>
+
+    
   </body>
 </html>

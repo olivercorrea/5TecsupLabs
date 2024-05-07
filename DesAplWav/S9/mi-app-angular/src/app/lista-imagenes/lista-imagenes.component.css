@@ -1,0 +1,5 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+.text-container {
+    padding: 0 500px;
+}

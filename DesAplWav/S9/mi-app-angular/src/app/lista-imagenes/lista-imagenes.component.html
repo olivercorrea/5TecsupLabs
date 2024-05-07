@@ -1,0 +1,24 @@
+<div class="card text-center"> <!-- Contenedor principal de la tarjeta centrado -->
+    <!-- Título principal -->
+    <h1 class="display-4 mb-4" style="font-size: 2.5rem;"><i>Lista de Lugares turísticos en el mundo.</i></h1>
+    
+    <!-- Bucle *ngFor para iterar sobre cada imagen -->
+    <div *ngFor="let imagen of imagenes">
+        <!-- Contenedor para centrar la imagen -->
+        <div class="d-flex justify-content-center">
+            <!-- Imagen -->
+            <img [src]="imagen.url" class="card-img-top img-fluid" alt="Imagen" style="width: 400px; height: 400px; object-fit: cover;">
+        </div>
+        
+        <!-- Cuerpo de la tarjeta -->
+        <div class="card-body">
+            <!-- Título de la imagen -->
+            <h5 class="card-title text-danger display-6">{{ imagen.titulo }}</h5>
+            <!-- Contenedor para la descripción -->
+            <div class="text-container">
+                <!-- Descripción de la imagen -->
+                <p class="card-text text-primary">{{ imagen.descripcion }}</p>
+            </div>
+        </div>
+    </div>
+</div>

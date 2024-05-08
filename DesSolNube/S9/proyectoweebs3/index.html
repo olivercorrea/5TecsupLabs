@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galería de Fotos con Títulos</title>
+<style>
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .gallery-item {
+        position: relative;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .gallery-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .gallery-item .title {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 8px;
+        color: #fff;
+        font-size: 14px;
+        text-align: center;
+        box-sizing: border-box;
+    }
+</style>
+</head>
+<body>
+
+<div class="gallery">
+    <div class="gallery-item">
+        <img src="imagenes/imagen1.jpg" alt="Imagen 1">
+        <div class="title">Título de la Imagen 1</div>
+    </div>
+    <div class="gallery-item">
+        <img src="imagenes/imagen2.jpg" alt="Imagen 2">
+        <div class="title">Título de la Imagen 2</div>
+    </div>
+    <div class="gallery-item">
+        <img src="imagenes/imagen3.jpg" alt="Imagen 3">
+        <div class="title">Título de la Imagen 3</div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-// import 'package:laboratorio09/app/view/splash.dart';
-import 'package:laboratorio09/app/view/task_list.dart';
+import 'package:laboratorio09/app/view/splash.dart';
+// import 'package:laboratorio09/app/view/task_list.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: const TaskListPage(),
+      home: const SplashPage(),
     );
   }
 }

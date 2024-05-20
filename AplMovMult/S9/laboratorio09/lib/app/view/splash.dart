@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:laboratorio09/app/view/task_list.dart';
 
 // Clase que representa la página de splash, que se muestra al inicio de la aplicación
 class SplashPage extends StatelessWidget {
@@ -14,38 +16,50 @@ class SplashPage extends StatelessWidget {
       body: Column(
         // Se utiliza un Column para mostrar los elementos en una fila vertical
         children: [
-          Row(
-            // Fila que contiene la imagen del logotipo
+          Column(
             children: [
+              Row(
+                // Fila que contiene la imagen del logotipo
+                children: [
+                  Image.asset(
+                    'assets/images/Vector.png',
+                    width: 141,
+                    height: 129,
+                  ),
+                ],
+              ),
+              const SizedBox(height: 79), // Espacio entre los widgets
               Image.asset(
-                'assets/images/Vector.png',
-                width: 141,
-                height: 129,
+                'assets/images/onboarding-image.png',
+                width: 180,
+                height: 168,
+              ),
+              const SizedBox(height: 99),
+              Text(
+                'Lista de tareas',
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyMedium!
+                    .copyWith(fontSize: 18, fontWeight: FontWeight.w600),
+              ),
+              const SizedBox(height: 21),
+              const Padding(
+                // Relleno para agregar espacio alrededor del Texto
+                padding: EdgeInsets.symmetric(horizontal: 32),
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
+                    return const TaskListPage();
+                  }));
+                },
+                child: const Text(
+                  'La mejor forma para que no se te olvide nada es anotarlo. Guarda tus tareas y ve completando poco a poco para aumentar tu productividad',
+                  textAlign: TextAlign.center,
+                ),
               ),
             ],
-          ),
-          const SizedBox(height: 79), // Espacio entre los widgets
-          Image.asset(
-            'assets/images/onboarding-image.png',
-            width: 180,
-            height: 168,
-          ),
-          const SizedBox(height: 99),
-          Text(
-            'Lista de tareas',
-            style: Theme.of(context)
-                .textTheme
-                .bodyMedium!
-                .copyWith(fontSize: 18, fontWeight: FontWeight.w600),
-          ),
-          const SizedBox(height: 21),
-          const Padding(
-            // Relleno para agregar espacio alrededor del Texto
-            padding: EdgeInsets.symmetric(horizontal: 32),
-          ),
-          const Text(
-            'La mejor forma para que no se te olvide nada es anotarlo. Guarda tus tareas y ve completando poco a poco para aumentar tu productividad',
-            textAlign: TextAlign.center,
           ),
         ],
         // mainAxisAlignment: MainAxisAlignment

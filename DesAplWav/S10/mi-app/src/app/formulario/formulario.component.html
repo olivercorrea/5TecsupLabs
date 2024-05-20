@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <form #formulario="ngForm" (submit)="onSubmit()" class="mt-4">
+        <div class="form-group mb-3">
+          <label for="nombre" class="custom-label">Nombre:</label>
+          <input
+            type="text"
+            id="nombre"
+            [(ngModel)]="nombre"
+            name="nombre"
+            class="form-control custom-input"
+            required
+          />
+        </div>
+
+        <div class="form-group mb-3">
+          <label for="email" class="custom-label">Email:</label>
+          <input
+            type="email"
+            id="email"
+            [(ngModel)]="email"
+            name="email"
+            class="form-control custom-input"
+            required
+          />
+        </div>
+        <div></div>
+        <button
+          type="submit"
+          [disabled]="!formularioValido()"
+          class="btn btn-dark custom-button"
+        >
+          Enviar
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

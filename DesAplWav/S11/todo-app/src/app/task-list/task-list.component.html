@@ -1,3 +1,14 @@
-<ul>
-  <li *ngFor="let task of task">{{ task }}</li>
+<ul class="list-group">
+  <li *ngFor="let task of tasks" class="list-group-item">
+    <div class="form-check">
+      <input
+        type="checkbox"
+        [(ngModel)]="task.completed"
+        class="form-check-input"
+      />
+      <label class="form-check-label" [class.completed]="task.completed">{{
+        task.name
+      }}</label>
+    </div>
+  </li>
 </ul>

@@ -1,10 +1,16 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Task } from './task-list.model';
 
 @Component({
   selector: 'app-task-list',
   templateUrl: './task-list.component.html',
   styleUrls: ['./task-list.component.css']
 })
-export class TaskListComponent {
-  @Input() task: string[] = [];
+export class TaskListComponent implements OnInit {
+
+  ngOnInit() {
+    this.tasks = [];
+  }
+
+  @Input() tasks: Task[] = [];
 }

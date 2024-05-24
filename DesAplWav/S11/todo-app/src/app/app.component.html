@@ -1,2 +1,12 @@
-<app-add-task (taskAdded)="addTask($event)"></app-add-task>
-<app-task-list [task]="task"></app-task-list>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <app-add-task (taskAdded)="addTask($event)"></app-add-task>
+      <app-task-filter
+        (filterChanged)="applyFilter($event)"
+        class="my-3"
+      ></app-task-filter>
+      <app-task-list [tasks]="filteredTasks"></app-task-list>
+    </div>
+  </div>
+</div>

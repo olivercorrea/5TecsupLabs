@@ -1,2 +1,10 @@
-<input [(ngModel)]="taskName" placeholder="Nombre de la tarea" />
-<button (click)="addTask()">Agregar tarea</button>
+<div class="input-group mb-3 mx-auto" style="max-width: 500px">
+  <input
+    [(ngModel)]="taskName"
+    class="form-control"
+    placeholder="Nombre de la tarea"
+  />
+  <div class="input-group-append">
+    <button (click)="addTask()" class="btn btn-primary">Agregar tarea</button>
+  </div>
+</div>

@@ -1,0 +1,268 @@
+<div class="container mt-4">
+  <h2>Canciones</h2>
+
+  <div *ngIf="successMessage" class="alert alert-success" role="alert">
+    {{ successMessage }}
+  </div>
+
+  <form
+    #songForm="ngForm"
+    (ngSubmit)="
+      currentSong._id
+        ? updateItem(currentSong._id, songForm)
+        : createItem(songForm)
+    "
+  >
+    <div class="form-group">
+      <label for="title">Título:</label>
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="currentSong.title"
+        name="title"
+        required
+        #title="ngModel"
+      />
+      <div
+        *ngIf="title.invalid && (title.dirty || title.touched)"
+        class="text-danger"
+      >
+        El título es requerido.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="artist">Artista:</label>
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="currentSong.artist"
+        name="artist"
+        required
+        #artist="ngModel"
+      />
+      <div
+        *ngIf="artist.invalid && (artist.dirty || artist.touched)"
+        class="text-danger"
+      >
+        El artista es requerido.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="album">Álbum:</label>
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="currentSong.album"
+        name="album"
+        required
+        #album="ngModel"
+      />
+      <div
+        *ngIf="album.invalid && (album.dirty || album.touched)"
+        class="text-danger"
+      >
+        El álbum es requerido.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="genre">Género:</label>
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="currentSong.genre"
+        name="genre"
+        required
+        #genre="ngModel"
+      />
+      <div
+        *ngIf="genre.invalid && (genre.dirty || genre.touched)"
+        class="text-danger"
+      >
+        El género es requerido.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="releaseYear">Año de lanzamiento:</label>
+      <input
+        type="number"
+        class="form-control"
+        [(ngModel)]="currentSong.releaseYear"
+        name="releaseYear"
+        required
+        min="1900"
+        [max]="currentYear"
+        #releaseYear="ngModel"
+      />
+      <div
+        *ngIf="
+          releaseYear.invalid && (releaseYear.dirty || releaseYear.touched)
+        "
+        class="text-danger"
+      >
+        El año de lanzamiento es requerido y debe estar entre 1900 y el año
+        actual.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="duration">Duración (segundos):</label>
+      <input
+        type="number"
+        class="form-control"
+        [(ngModel)]="currentSong.duration"
+        name="duration"
+        required
+        min="1"
+        #duration="ngModel"
+      />
+      <div
+        *ngIf="duration.invalid && (duration.dirty || duration.touched)"
+        class="text-danger"
+      >
+        La duración es requerida y debe ser mayor a 1.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="imageUrl">URL de la imagen:</label>
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="currentSong.imageUrl"
+        name="imageUrl"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="imageFile">Imagen del álbum:</label>
+      <input
+        type="file"
+        class="form-control"
+        id="imageFile"
+        (change)="onFileSelected($event)"
+      />
+      <button
+        type="button"
+        class="btn btn-secondary mt-2"
+        (click)="uploadImage()"
+      >
+        Subir imagen
+      </button>
+    </div>
+
+    <hr />
+
+    <button type="submit" class="btn btn-primary" [disabled]="songForm.invalid">
+      {{ currentSong._id ? "Actualizar" : "Agregar" }}
+    </button>
+  </form>
+
+  <hr />
+
+  <div class="form-group">
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="searchTerm"
+      placeholder="Buscar canciones..."
+      (input)="searchSongs()"
+    />
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th><i>Portada</i></th>
+        <th (click)="sortSongs('title')">
+          Título
+          <i
+            class="bi"
+            [ngClass]="{
+              'bi-caret-up-fill': sortField === 'title' && sortOrder === 'asc',
+              'bi-caret-down-fill':
+                sortField === 'title' && sortOrder === 'desc'
+            }"
+          ></i>
+        </th>
+        <th (click)="sortSongs('artist')">
+          Artista
+          <i
+            class="bi"
+            [ngClass]="{
+              'bi-caret-up-fill': sortField === 'artist' && sortOrder === 'asc',
+              'bi-caret-down-fill':
+                sortField === 'artist' && sortOrder === 'desc'
+            }"
+          ></i>
+        </th>
+        <th (click)="sortSongs('album')">
+          Álbum
+          <i
+            class="bi"
+            [ngClass]="{
+              'bi-caret-up-fill': sortField === 'album' && sortOrder === 'asc',
+              'bi-caret-down-fill':
+                sortField === 'album' && sortOrder === 'desc'
+            }"
+          ></i>
+        </th>
+        <th (click)="sortSongs('genre')">
+          Género
+          <i
+            class="bi"
+            [ngClass]="{
+              'bi-caret-up-fill': sortField === 'genre' && sortOrder === 'asc',
+              'bi-caret-down-fill':
+                sortField === 'genre' && sortOrder === 'desc'
+            }"
+          ></i>
+        </th>
+        <th (click)="sortSongs('releaseYear')">
+          Año
+          <i
+            class="bi"
+            [ngClass]="{
+              'bi-caret-up-fill':
+                sortField === 'releaseYear' && sortOrder === 'asc',
+              'bi-caret-down-fill':
+                sortField === 'releaseYear' && sortOrder === 'desc'
+            }"
+          ></i>
+        </th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let song of songs">
+        <td>
+          <img
+            [src]="song.imageUrl"
+            alt="Portada del álbum"
+            class="img-thumbnail"
+            style="max-width: 50px"
+          />
+        </td>
+        <td>{{ song.title }}</td>
+        <td>{{ song.artist }}</td>
+        <td>{{ song.album }}</td>
+        <td>{{ song.genre }}</td>
+        <td>{{ song.releaseYear }}</td>
+        <td>
+          <button
+            class="btn btn-sm btn-primary me-2"
+            (click)="editItem(song._id)"
+          >
+            Editar
+          </button>
+          <button class="btn btn-sm btn-danger" (click)="deleteItem(song._id)">
+            Eliminar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

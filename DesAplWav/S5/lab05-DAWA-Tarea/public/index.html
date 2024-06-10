@@ -1,21 +1,44 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Chat con Socket.IO</title>
-    <script src="/socket.io/socket.io.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-</head>
-<body class="bg-gray-100 h-screen p-6">
-    <div class="bg-white rounded-lg p-4 max-w-lg mx-auto shadow">
-        <div class="mb-4">
-            <input type="text" id="username" placeholder="Nombre de usuario" class="border p-2 w-full">
-            <input type="text" id="profileImage" placeholder="URL de imagen de perfil" class="border p-2 w-full my-2">
-            <input id="message" autocomplete="off" placeholder="Escribe un mensaje..." class="border p-2 w-full">
-            <button onclick="enviarMensaje()" class="bg-green-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded mt-2">Enviar</button>
-        </div>
-        <ul id="lista-mensajes" class="list-none overflow-auto max-h-80"></ul>
+    <script src="/socket.io/socket.io.js"></script> // Inclusión de la biblioteca Socket.IO
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-100 h-screen p-6">
+    <div class="bg-white rounded-lg p-4 max-w-lg mx-auto shadow"> // Contenedor principal del chat
+      <div class="mb-4"> // Contenedor para los campos de entrada
+        <input
+          type="text"
+          id="username"
+          placeholder="Nombre de usuario"
+          class="border p-2 w-full"
+        /> // Campo de entrada para el nombre de usuario
+        <input
+          type="text"
+          id="profileImage"
+          placeholder="URL de imagen de perfil"
+          class="border p-2 w-full my-2"
+        /> // Campo de entrada para la URL de la imagen de perfil
+        <input
+          id="message"
+          autocomplete="off"
+          placeholder="Escribe un mensaje..."
+          class="border p-2 w-full"
+        /> // Campo de entrada para el mensaje
+        <button
+          onclick="enviarMensaje()"
+          class="bg-green-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded mt-2"
+        >
+          Enviar
+        </button>
+      </div>
+      <ul id="lista-mensajes" class="list-none overflow-auto max-h-80"></ul> // Lista de mensajes
     </div>
 
-    <script src="/index.js"></script>
-</body>
+    <script src="/index.js"></script> // Inclusión del archivo JavaScript que contiene la lógica del chat
+  </body>
 </html>

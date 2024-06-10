@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Agenda de Tareas</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="mt-4">Gestor de tareas</h1>
+      <a href="/tasks/new" class="btn btn-primary mb-3">Nueva Tarea</a>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Número</th>
+            <th>Nombre de la Tarea</th>
+            <th>Responsable</th>
+            <th>Fecha de inicio</th>
+            <th>Fecha de finalización</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% tasks.forEach(task => { %>
+          <tr>
+            <td><%= task.TaskId %></td>
+            <td><%= task.TaskName %></td>
+            <td><%= task.TaskOwner %></td>
+            <td><%= task.StartDate %></td>
+            <td><%= task.EndDate %></td>
+            <td><%= task.TaskStatus %></td>
+            <td>
+              <a
+                href="/tasks/edit/<%= task.TaskId %>/<%= task.TaskName %>"
+                class="btn btn-warning btn-sm"
+                >Editar</a
+              >
+              <a
+                href="/tasks/delete/<%= task.TaskId %>/<%= task.TaskName %>"
+                class="btn btn-danger btn-sm"
+                >Eliminar</a
+              >
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

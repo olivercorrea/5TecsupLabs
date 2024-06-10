@@ -4,19 +4,18 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
-  styleUrls: ['./user-list.component.css']
+  styleUrls: ['./user-list.component.css'],
 })
 export class UserListComponent implements OnInit {
   users = [
-    { id: 1, name: 'User 1' },
-    { id: 2, name: 'User 2' },
-    { id: 3, name: 'User 3' },
+    { id: 1, name: 'Jose' },
+    { id: 2, name: 'Maria' },
+    { id: 3, name: 'Oliver' },
   ];
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   showDetails(userId: number) {
     this.router.navigate(['/users', userId]);

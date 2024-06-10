@@ -1,7 +1,9 @@
-<h2>Posts</h2>
-<ul>
-  <li *ngFor="let post of posts">
-    <h3 (click)="showDetails(post.id)">{{ post.title }}</h3>
-    <p>{{ post.content }}</p>
+<h2 class="display-4">Publicaciones</h2>
+<ul class="list-group">
+  <li *ngFor="let post of posts" class="list-group-item">
+    <h3 class="list-group-item-heading" (click)="showDetails(post.id)">
+      {{ post.title }}
+    </h3>
+    <p class="list-group-item-text">{{ post.content }}</p>
   </li>
 </ul>

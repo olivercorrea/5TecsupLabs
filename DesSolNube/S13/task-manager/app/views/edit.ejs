@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Editar Tarea</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="mt-4">Editar Tarea</h1>
+      <form
+        action="/tasks/update/<%= task.TaskId %>/<%= task.TaskName %>"
+        method="POST"
+      >
+        <div class="form-group">
+          <label for="taskOwner">Responsable</label>
+          <input
+            type="text"
+            class="form-control"
+            id="taskOwner"
+            name="TaskOwner"
+            value="<%= task.TaskOwner %>"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="startDate">Fecha de inicio</label>
+          <input
+            type="date"
+            class="form-control"
+            id="startDate"
+            name="StartDate"
+            value="<%= task.StartDate %>"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="endDate">Fecha de finalización</label>
+          <input
+            type="date"
+            class="form-control"
+            id="endDate"
+            name="EndDate"
+            value="<%= task.EndDate %>"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="taskStatus">Estado</label>
+          <input
+            type="text"
+            class="form-control"
+            id="taskStatus"
+            name="TaskStatus"
+            value="<%= task.TaskStatus %>"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Actualizar Tarea</button>
+      </form>
+    </div>
+  </body>
+</html>

@@ -9,21 +9,15 @@ import { UsersModule } from './users/users.module';
 import { PostsModule } from './posts/posts.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AboutComponent,
-    NotFoundComponent
+    NotFoundComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    UsersModule,
-    PostsModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, UsersModule, PostsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

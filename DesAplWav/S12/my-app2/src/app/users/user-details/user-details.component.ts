@@ -4,13 +4,13 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-user-details',
   templateUrl: './user-details.component.html',
-  styleUrls: ['./user-details.component.css']
+  styleUrls: ['./user-details.component.css'],
 })
 export class UserDetailsComponent implements OnInit {
   @Input() userId!: number;
-  user: any;  // Definimos la propiedad user
+  user: any; // Definimos la propiedad user
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     const id = this.userId || Number(this.route.snapshot.paramMap.get('id'));
@@ -19,10 +19,18 @@ export class UserDetailsComponent implements OnInit {
 
   getUserById(id: number) {
     const users = [
-      { id: 1, name: 'User 1', details: 'Details of User 1' },
-      { id: 2, name: 'User 2', details: 'Details of User 2' },
-      { id: 3, name: 'User 3', details: 'Details of User 3' },
+      {
+        id: 1,
+        name: 'Jose',
+        details: 'Soy estudiante de Diseño y desarrollo de software.',
+      },
+      { id: 2, name: 'Maria', details: 'Me gusta ver series y leer libros.' },
+      {
+        id: 3,
+        name: 'Oliver',
+        details: 'Actualmente estoy aprendiendo sobre inteligencia artificial.',
+      },
     ];
-    return users.find(user => user.id === id);
+    return users.find((user) => user.id === id);
   }
 }

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Manager</title>
+    <script>
+        const apiUrl = 'http://localhost:3000';
+
+        async function createTask() {
+            const task = {
+                TaskId: document.getElementById('taskId').value,
+                TaskName: document.getElementById('taskName').value,
+                TaskOwner: document.getElementById('taskOwner').value,
+                StartDate: document.getElementById('startDate').value,
+                EndDate: document.getElementById('endDate').value,
+                TaskStatus: document.getElementById('taskStatus').value
+            };
+
+            const response = await fetch(`${apiUrl}/tasks`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(task)
+            });
+
+            const data = await response.json();
+            alert(JSON.stringify(data));
+        }
+
+        async function getTask() {
+            const taskId = document.getElementById('taskId').value;
+            const taskName = document.getElementById('taskName').value;
+
+            const response = await fetch(`${apiUrl}/tasks/${taskId}/${taskName}`);
+            const data = await response.json();
+            alert(JSON.stringify(data));
+        }
+
+        async function updateTask() {
+            const taskId = document.getElementById('taskId').value;
+            const taskName = document.getElementById('taskName').value;
+            const task = {
+                TaskOwner: document.getElementById('taskOwner').value,
+                StartDate: document.getElementById('startDate').value,
+                EndDate: document.getElementById('endDate').value,
+                TaskStatus: document.getElementById('taskStatus').value
+            };
+
+            const response = await fetch(`${apiUrl}/tasks/${taskId}/${taskName}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(task)
+            });
+
+            const data = await response.json();
+            alert(JSON.stringify(data));
+        }
+
+        async function deleteTask() {
+            const taskId = document.getElementById('taskId').value;
+            const taskName = document.getElementById('taskName').value;
+
+            const response = await fetch(`${apiUrl}/tasks/${taskId}/${taskName}`, {
+                method: 'DELETE'
+            });
+
+            const data = await response.json();
+            alert(JSON.stringify(data));
+        }
+    </script>
+</head>
+<body>
+    <h1>Task Manager</h1>
+    <form>
+        <label for="taskId">Task ID:</label><br>
+        <input type="text" id="taskId" name="taskId"><br>
+        <label for="taskName">Task Name:</label><br>
+        <input type="text" id="taskName" name="taskName"><br>
+        <label for="taskOwner">Task Owner:</label><br>
+        <input type="text" id="taskOwner" name="taskOwner"><br>
+        <label for="startDate">Start Date:</label><br>
+        <input type="date" id="startDate" name="startDate"><br>
+        <label for="endDate">End Date:</label><br>
+        <input type="date" id="endDate" name="endDate"><br>
+        <label for="taskStatus">Task Status:</label><br>
+        <input type="text" id="taskStatus" name="taskStatus"><br><br>
+        <button type="button" onclick="createTask()">Create Task</button>
+        <button type="button" onclick="getTask()">Get Task</button>
+        <button type="button" onclick="updateTask()">Update Task</button>
+        <button type="button" onclick="deleteTask()">Delete Task</button>
+    </form>
+</body>
+</html>

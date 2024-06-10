@@ -1,7 +1,9 @@
-<h2>Users</h2>
-<ul>
-  <li *ngFor="let user of users">
+<h2>Lista de Usuarios</h2>
+<ul class="list-group">
+  <li *ngFor="let user of users" class="list-group-item">
     {{ user.name }}
-    <button (click)="showDetails(user.id)">Details</button>
+    <button class="btn btn-secondary btn-sm" (click)="showDetails(user.id)">
+      Detalles
+    </button>
   </li>
 </ul>

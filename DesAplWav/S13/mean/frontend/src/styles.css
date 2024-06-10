@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import '~bootstrap-icons/font/bootstrap-icons.css';
+
+.sortable {
+  cursor: pointer;
+}
+
+.sortable:hover {
+  text-decoration: underline;
+}
+
+.bi {
+  font-size: 0.8rem;
+  vertical-align: middle;
+}

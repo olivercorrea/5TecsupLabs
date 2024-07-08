@@ -34,14 +34,19 @@ class _ImageDetailScreenState extends State<ImageDetailScreen> {
             ),
           ),
           const SizedBox(height: 10),
-          Text(
-            widget.details,
-            textAlign: TextAlign.justify,
-            style: GoogleFonts.oregano(
-              textStyle: const TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.normal,
-                color: Colors.black,
+          Expanded(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                widget.details,
+                textAlign: TextAlign.justify,
+                style: GoogleFonts.oregano(
+                  textStyle: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.normal,
+                    color: Colors.black,
+                  ),
+                ),
               ),
             ),
           ),

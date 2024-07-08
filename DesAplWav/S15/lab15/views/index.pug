@@ -1,0 +1,36 @@
+//- doctype html
+//- html
+//-   head
+//-     title Mi Aplicación
+//-   body
+//-     h1 Mi Aplicación
+//-     h2 Datos existentes
+//-     ul
+//-       each dato in datos
+//-         li= dato.columna1
+//-     h2 Agregar nuevo dato
+//-     form(action="/" method="POST")
+//-       input(type="text" name="nuevoDato" placeholder="Ingrese un nuevo dato")
+//-       button(type="submit") Agregar
+
+doctype html
+html
+  head
+    title Mi Aplicación
+  body
+    h1 Mi Aplicación
+    h2 Datos existentes
+    table
+      tr
+        th Nombre
+        th Nota
+        th Curso
+      each dato in datos
+        tr
+          td= dato.columna1
+          td= dato.columna2
+          td= dato.columna3
+    h2 Agregar nuevo dato
+    form(action="/" method="POST")
+      input(type="text" name="nuevoDato" placeholder="Ingrese un nuevo dato")
+      button(type="submit") Agregar

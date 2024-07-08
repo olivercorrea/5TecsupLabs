@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Carga de archivos</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        position: relative;
+      }
+      form {
+        max-width: 500px;
+        margin: 40px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      input[type="file"] {
+        padding: 10px;
+        border: 1px solid #ccc;
+      }
+      input[type="submit"] {
+        background-color: #4caf50;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      input[type="submit"]:hover {
+        background-color: #3e8e41;
+      }
+      #file-info {
+        margin-top: 20px;
+      }
+      #file-info p {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Carga de archivos</h1>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+      <input type="file" name="files" multiple />
+      <input type="submit" value="Cargar" />
+    </form>
+
+    <div id="file-info"></div>
+
+    <script>
+      // Script para mostrar los detalles del archivo cargado
+      const form = document.querySelector("form");
+      const fileInfoDiv = document.querySelector("#file-info");
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const formData = new FormData(form);
+        const response = await fetch("/upload", {
+          method: "POST",
+          body: formData,
+        });
+        if (response.ok) {
+          const fileInfos = await response.json();
+          let html = "";
+          fileInfos.forEach((fileInfo) => {
+            html += `
+              <p>Nombre: ${fileInfo.filename}</p>
+              <p>Nombre original: ${fileInfo.originalname}</p>
+              <p>Tamaño: ${fileInfo.size} bytes</p>
+              <p>Tipo MIME: ${fileInfo.mimetype}</p>
+              <hr />
+            `;
+          });
+          fileInfoDiv.innerHTML = html;
+        } else {
+          fileInfoDiv.innerHTML = "Error al cargar el archivo.";
+        }
+      });
+    </script>
+  </body>
+</html>

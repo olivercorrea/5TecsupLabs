@@ -1,0 +1,137 @@
+doctype html
+html
+  head
+    meta
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title CRUD de Alumnos y Cursos
+    style.
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      h1, h2 {
+        color: #333;
+        margin-bottom: 10px;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-bottom: 20px;
+      }
+      th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+      .error {
+        color: #red;
+        margin-bottom: 10px;
+      }
+      .container {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .header {
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+      }
+      .header h1 {
+        margin-bottom: 0;
+      }
+      .section {
+        margin-bottom: 20px;
+      }
+      .section h2 {
+        margin-top: 0;
+      }
+      .form-group {
+        margin-bottom: 10px;
+      }
+      .form-control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+      }
+      .btn {
+        background-color: #337ab7;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .btn:hover {
+        background-color: #23527c;
+      }
+  body
+    .container
+      .header
+        h1 CRUD de Alumnos y Cursos
+      if errors
+        .section
+          .error
+            each error in errors
+              p= error.msg
+      .section
+        h2 Alumnos
+        table
+          tr
+            th Nombre
+            th Edad
+            th Email
+            th Curso
+            th Acciones
+          each alumno in alumnos
+            tr
+              td= alumno.nombre
+              td= alumno.edad
+              td= alumno.email
+              td= alumno.curso
+              td
+                .form-group
+                  form(action=`/alumnos/${alumno.id}` method="POST" style="display: inline;")
+                    input(type="text" name="nombre" value=alumno.nombre required class="form-control")
+                    input(type="number" name="edad" value=alumno.edad required class="form-control")
+                    input(type="email" name="email" value=alumno.email required class="form-control")
+                    button(type="submit" class="btn") Actualizar
+                .form-group
+                  form(action=`/alumnos/${alumno.id}/delete` method="POST" style="display: inline;")
+                    button(type="submit" class="btn btn-danger") Eliminar
+      .section
+        h2 Agregar Nuevo Alumno
+        form(action="/alumnos" method="POST")
+          .form-group
+            input(type="text" name="nombre" placeholder="Nombre" required class="form-control")
+          .form-group
+            input(type="number" name="edad" placeholder="Edad" required class="form-control")
+          .form-group
+            input(type="email" name="email" placeholder="Email" required class="form-control")
+          button(type="submit" class="btn") Agregar Alumno
+      .section
+        h2 Cursos Disponibles
+        ul
+          each curso in cursos
+            li= curso.nombre + ": " + curso.descripcion
+      .section
+        h2 Inscribir Alumno en Curso
+        form(action="/inscripciones" method="POST")
+          .form-group
+            select(name="alumno_id" required class="form-control")
+              option(value="") Seleccione un alumno
+              each alumno in alumnos
+                option(value=alumno.id)= alumno.nombre
+          .form-group
+            select(name="curso_id" required class="form-control")
+              option(value="") Seleccione un curso
+              each curso in cursos
+                option(value=curso.id)= curso.nombre
+          button(type="submit" class="btn") Inscribir

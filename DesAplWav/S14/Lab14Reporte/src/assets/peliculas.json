@@ -1,0 +1,17 @@
+[
+  {
+    "titulo": "Pelicula 1",
+    "genero": "Acción",
+    "lanzamiento": 2020
+  },
+  {
+    "titulo": "Pelicula 2",
+    "genero": "Comedia",
+    "lanzamiento": 2018
+  },
+  {
+    "titulo": "Pelicula 3",
+    "genero": "Drama",
+    "lanzamiento": 2021
+  }
+]

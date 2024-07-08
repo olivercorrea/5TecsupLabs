@@ -1,0 +1,56 @@
+.filtros {
+  margin-bottom: 20px;
+}
+
+table.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table.table,
+table.table th,
+table.table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+table.table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+table.table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+table.table tr:hover {
+  background-color: #ddd;
+}
+
+.botones {
+  margin-top: 20px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.btn-primary {
+  background-color: #337ab7;
+  color: #fff;
+}
+
+.btn-success {
+  background-color: #5cb85c;
+  color: #fff;
+}
+
+.btn-info {
+  background-color: #5bc0de;
+  color: #fff;
+}

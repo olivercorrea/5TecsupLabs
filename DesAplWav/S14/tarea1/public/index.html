@@ -1,0 +1,50 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carga de archivos</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>Carga de archivos</h1>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+      <input type="file" name="files" id="file-input" multiple />
+      <label for="file-input">Seleccionar archivos</label>
+      <button type="submit">Cargar</button>
+    </form>
+
+    <div id="file-info"></div>
+
+    <script>
+      const form = document.querySelector("form");
+      const fileInfoDiv = document.querySelector("#file-info");
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const formData = new FormData(form);
+        const response = await fetch("/upload", {
+          method: "POST",
+          body: formData,
+        });
+        if (response.ok) {
+          const fileInfos = await response.json();
+          let html = "";
+          fileInfos.forEach((fileInfo) => {
+            html += `
+              <p>Nombre: ${fileInfo.filename}</p>
+              <p>Nombre original: ${fileInfo.originalname}</p>
+              <p>Tamaño: ${fileInfo.size} bytes</p>
+              <p>Tipo MIME: ${fileInfo.mimetype}</p>
+              <hr />
+            `;
+          });
+          fileInfoDiv.innerHTML = html;
+        } else {
+          fileInfoDiv.innerHTML = "Error al cargar el archivo.";
+        }
+      });
+    </script>
+  </body>
+</html>
